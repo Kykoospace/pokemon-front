@@ -1,0 +1,46 @@
+div.container {
+  padding: 0px;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid transparent;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+
+  &.selected {
+    background-color: rgba(255, 0, 0, 0.5);
+    border: 1px solid #F0F0F0;
+    cursor: inherit;
+
+    img {
+      opacity: 1;
+    }
+
+    p.name {
+      background-color: #F0F0F0;
+      color: black;
+    }
+  }
+
+  &:hover {
+    border: 1px solid #F0F0F0;
+
+    img {
+      opacity: 1;
+    }
+  }
+
+  img {
+    width: 100%;
+    margin: 0px;
+    opacity: .8;
+  }
+
+  p.name {
+    padding: 10px;
+    margin: 0px;
+    color: white;
+    text-align: center;
+    text-transform: capitalize;
+  }
+}

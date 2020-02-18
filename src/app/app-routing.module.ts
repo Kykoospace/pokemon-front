@@ -1,8 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { SelectComponent } from './select/select.component';
+import {BattleFieldComponent} from './battle-field/battle-field.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: '/select' },
+  { path: 'select', component: SelectComponent },
+  { path: 'fight', component: BattleFieldComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

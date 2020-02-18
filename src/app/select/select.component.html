@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="title">
+    <h1>Sélectionnez vos combatants</h1>
+  </div>
+  <div class="validation">
+    <div class="fighter">
+      <img *ngIf="pokemon1" [src]="pokemon1.sprites.front_default" alt="">
+    </div>
+    <div class="separator">
+      <img src="./assets/images/vs_logo.png" alt="">
+      <button *ngIf="pokemon1 && pokemon2">Démarrer la violence</button>
+    </div>
+    <div class="fighter">
+      <img *ngIf="pokemon2" [src]="pokemon2?.sprites.front_default" alt="">
+    </div>
+  </div>
+  <div class="grid">
+    <app-grid
+      [pokemonList]="pokemonList"
+      [selectedPokemon]="pokemon1?.id"
+      (pokemonSelected)="changePokemon1($event)"
+    ></app-grid>
+    <app-grid
+      [pokemonList]="pokemonList"
+      [selectedPokemon]="pokemon2?.id"
+      (pokemonSelected)="changePokemon2($event)"
+    ></app-grid>
+  </div>
+</div>
