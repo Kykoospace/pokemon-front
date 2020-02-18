@@ -1,0 +1,19 @@
+div.container {
+  background-image: url("src/assets/images/stadium.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 100%;
+  text-align: center;
+}
+
+div.grid {
+  display: grid;
+  grid-template-rows: 53% 47%;
+  height: 100%;
+}
+
+div.field {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-self: end;
+}

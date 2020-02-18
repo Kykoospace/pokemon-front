@@ -1,9 +1,17 @@
 <div class="container">
   <div class="grid">
     <div class="field">
-      <app-pokemon-panel></app-pokemon-panel>
-      <app-pokemon-panel></app-pokemon-panel>
+      <app-pokemon-panel
+        [pokemon]="pokemon1"
+        [reverted]="true"
+      ></app-pokemon-panel>
+      <app-pokemon-panel
+        [pokemon]="pokemon2"
+        [reverted]="false"
+      ></app-pokemon-panel>
     </div>
-    <app-message-panel></app-message-panel>
+    <app-message-panel
+      [messages]="messages"
+    ></app-message-panel>
   </div>
 </div>

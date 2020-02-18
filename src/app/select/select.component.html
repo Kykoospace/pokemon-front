@@ -8,7 +8,10 @@
     </div>
     <div class="separator">
       <img src="./assets/images/vs_logo.png" alt="">
-      <button *ngIf="pokemon1 && pokemon2">Démarrer la violence</button>
+      <button
+        *ngIf="pokemon1 && pokemon2"
+        [routerLink]="['/fight', pokemon1.id, pokemon2.id]"
+      >Démarrer la violence</button>
     </div>
     <div class="fighter">
       <img *ngIf="pokemon2" [src]="pokemon2?.sprites.front_default" alt="">

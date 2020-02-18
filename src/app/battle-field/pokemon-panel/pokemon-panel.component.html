@@ -1,1 +1,10 @@
-<p>pokemon-panel works!</p>
+<div class="container">
+  <img
+    [src]="pokemon.sprites.front_default"
+    alt="front_default"
+    [class.reverted]="reverted"
+  >
+  <div class="status">
+    <p>{{ pokemon.name }}</p>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-pokemon-panel',
@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokemonPanelComponent implements OnInit {
 
+  @Input() private pokemon: any;
+  @Input() private reverted: boolean;
+
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

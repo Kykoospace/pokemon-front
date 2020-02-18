@@ -8,12 +8,13 @@ div.container {
   cursor: pointer;
 
   &.selected {
-    background-color: rgba(255, 0, 0, 0.5);
+    background-color: rgba(128, 0, 0, 0.5);
     border: 1px solid #F0F0F0;
     cursor: inherit;
 
     img {
       opacity: 1;
+      width: 100%;
     }
 
     p.name {

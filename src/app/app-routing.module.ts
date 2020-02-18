@@ -7,7 +7,7 @@ import {BattleFieldComponent} from './battle-field/battle-field.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/select' },
   { path: 'select', component: SelectComponent },
-  { path: 'fight', component: BattleFieldComponent }
+  { path: 'fight/:pokemonId1/:pokemonId2', component: BattleFieldComponent }
 ];
 
 @NgModule({

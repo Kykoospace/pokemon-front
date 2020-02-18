@@ -1,0 +1,16 @@
+div.container {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  box-sizing: border-box;
+  border-top: 1px solid #F0F0F0;
+}
+
+ul.message-container {
+  text-align: left;
+  margin: 10px 35%;
+  list-style: none;
+
+  li {
+    color: white;
+  }
+}
