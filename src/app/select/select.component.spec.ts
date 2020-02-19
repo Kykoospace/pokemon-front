@@ -4,6 +4,7 @@ import { SelectComponent } from './select.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import {GridComponent} from './grid/grid.component';
 import {PokemonComponent} from './grid/pokemon/pokemon.component';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('SelectComponent', () => {
   let component: SelectComponent;
@@ -11,7 +12,7 @@ describe('SelectComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule],
       declarations: [ SelectComponent, GridComponent, PokemonComponent ]
     })
     .compileComponents();

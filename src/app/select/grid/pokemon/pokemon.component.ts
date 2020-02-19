@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {PokemonService} from '../../../shared/pokemon.service';
+import {Pokemon} from '../../../shared/models/pokemon';
 
 @Component({
   selector: 'app-pokemon',
@@ -10,7 +11,7 @@ export class PokemonComponent implements OnInit {
 
   @Input() private pokemonUrl: string;
   @Input() private selectedPokemon: number;
-  private pokemon: any;
+  private pokemon: Pokemon;
 
   @Output() pokemonSelected = new EventEmitter<number>();
 
@@ -20,7 +21,7 @@ export class PokemonComponent implements OnInit {
 
   ngOnInit() {
     this.pokemonService.getPokemonByUrl(this.pokemonUrl)
-      .subscribe((pokemon) => {
+      .subscribe((pokemon: Pokemon) => {
         this.pokemon = pokemon;
       });
   }

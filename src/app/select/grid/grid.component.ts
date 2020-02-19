@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {PokemonFromApi} from '../../shared/models/apiModels';
 
 @Component({
   selector: 'app-grid',
@@ -7,7 +8,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class GridComponent implements OnInit {
 
-  @Input() private pokemonList: any;
+  @Input() private pokemonList: PokemonFromApi[];
   @Input() private selectedPokemon: number;
   @Output() private pokemonSelected = new EventEmitter<number>();
 
