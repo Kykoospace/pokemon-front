@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BattleFieldComponent } from './battle-field.component';
+import {GridComponent} from '../select/grid/grid.component';
+import {PokemonPanelComponent} from './pokemon-panel/pokemon-panel.component';
+import {MessagePanelComponent} from './message-panel/message-panel.component';
 
 describe('BattleFieldComponent', () => {
   let component: BattleFieldComponent;
@@ -8,7 +11,7 @@ describe('BattleFieldComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BattleFieldComponent ]
+      declarations: [ BattleFieldComponent, PokemonPanelComponent, MessagePanelComponent ]
     })
     .compileComponents();
   }));

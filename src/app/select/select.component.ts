@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PokemonService} from '../shared/pokemon.service';
+import {Pokemon} from '../shared/models/pokemon';
 
 @Component({
   selector: 'app-select',
