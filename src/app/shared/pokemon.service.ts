@@ -10,13 +10,14 @@ import {Pokemon} from './models/pokemon';
 })
 export class PokemonService {
   public static API_URL = 'https://pokeapi.co/api/v2/';
+  public static POKEMON_COUNT = 150;
 
   constructor(
     private http: HttpClient
   ) { }
 
   public getPokemonList(): Observable<PokemonFromApi[]> {
-    return this.http.get<ObjectResult>(PokemonService.API_URL + 'pokemon?limit=20').pipe(map(jsonResult => {
+    return this.http.get<ObjectResult>(PokemonService.API_URL + 'pokemon?limit=' + PokemonService.POKEMON_COUNT).pipe(map(jsonResult => {
       return jsonResult.results;
     }));
   }

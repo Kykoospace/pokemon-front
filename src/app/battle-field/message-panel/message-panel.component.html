@@ -1,12 +1,8 @@
 <div class="container">
-  <ul class="message-container">
-    <li *ngFor="let message of messages">
-      <span class="name">
-        {{message.pokemon.name}}
-      </span>
-      <span class="message">
-        {{message.message}}
-      </span>
-    </li>
-  </ul>
+  <table class="message-container">
+    <tr *ngFor="let message of messages">
+      <td class="name">{{ message.pokemon.name }}</td>
+      <td class="message">{{ message.message }}</td>
+    </tr>
+  </table>
 </div>
