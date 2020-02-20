@@ -1,6 +1,6 @@
 div.container {
   display: grid;
-  grid-template-rows: 15% 25% 60%;
+  grid-template-rows: 15% 30% 55%;
   background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("src/assets/images/stadium.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -29,16 +29,23 @@ div.validation {
   grid-template-columns: 1fr 250px 1fr;
 
   div.fighter {
-    text-align: center;
-    align-self: center;
-    height: 200px;
+    background: radial-gradient(circle, rgba(255, 255, 255, .6) 10%, rgba(0, 0, 0, 0) 30%);
+    padding: 0px;
+    margin: 0px;
+    position: relative;
 
     img {
-      height: 80%;
+      position: absolute;
+      bottom: 50px;
+      right: 45%;
+      max-height: 100%;
+      transform: scaleX(1.2) scaleY(1.2);
     }
     &:first-child {
       img {
-        transform: scaleX(-1);
+        left: 45%;
+        right: inherit;
+        transform: scaleX(-1.2) scaleY(1.2);
       }
     }
   }
