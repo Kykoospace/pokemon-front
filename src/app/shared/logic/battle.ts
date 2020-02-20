@@ -30,11 +30,11 @@ export class Battle {
       fighter = target;
       target = tmp;
     }
-    const winner = (this.isAlive(this.pok1))? this.pok1 : this.pok2;
+    const winner = (this.isAlive(this.pok1)) ? this.pok1 : this.pok2;
     this.messages.push(new Message(winner, `${winner.name} won`));
   }
 
-  private attack(fighter: Pokemon, target: Pokemon) {
+  public attack(fighter: Pokemon, target: Pokemon) {
     const damage = Math.floor(
       Math.floor(
         Math.floor(
