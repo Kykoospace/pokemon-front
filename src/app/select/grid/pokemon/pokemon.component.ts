@@ -21,9 +21,10 @@ export class PokemonComponent implements OnInit {
 
   ngOnInit() {
     this.pokemonService.getPokemonByUrl(this.pokemonUrl)
-      .subscribe((pokemon: Pokemon) => {
-        this.pokemon = pokemon;
-      });
+      .subscribe(
+        (pokemon: Pokemon) => { this.pokemon = pokemon; },
+        error => console.log(`Error while trying to retrieve pokemon with url ${this.pokemonUrl} form pokemon service api`)
+      );
   }
 
   private selectPokemon() {
