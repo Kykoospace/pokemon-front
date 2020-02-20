@@ -4,7 +4,7 @@
   </div>
   <div class="validation">
     <div class="fighter">
-      <img *ngIf="pokemon1" [src]="pokemon1.sprites?.front_default" alt="">
+      <img *ngIf="pokemon1" [src]="pokemonGif(pokemon1.id)" alt="">
     </div>
     <div class="separator">
       <img src="./assets/images/vs_logo.png" alt="">
@@ -14,7 +14,7 @@
       >Démarrer la violence</button>
     </div>
     <div class="fighter">
-      <img *ngIf="pokemon2" [src]="pokemon2?.sprites.front_default" alt="">
+      <img *ngIf="pokemon2" [src]="pokemonGif(pokemon2.id)" alt="">
     </div>
   </div>
   <div class="grid">

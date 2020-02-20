@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import pokemonGif from 'pokemon-gif';
 
 @Component({
   selector: 'app-pokemon-panel',
@@ -14,4 +15,7 @@ export class PokemonPanelComponent implements OnInit {
 
   ngOnInit() { }
 
+  pokemonGif(id: number) {
+    return pokemonGif(id);
+  }
 }

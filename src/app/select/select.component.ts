@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {PokemonService} from '../shared/pokemon.service';
 import {Pokemon} from '../shared/models/pokemon';
 import {PokemonFromApi} from '../shared/models/apiModels';
+import pokemonGif from 'pokemon-gif';
 
 @Component({
   selector: 'app-select',
@@ -39,4 +40,7 @@ export class SelectComponent implements OnInit {
       });
   }
 
+  pokemonGif(id: number) {
+    return pokemonGif(id);
+  }
 }
