@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Pokemon} from '../../shared/models/pokemon';
 import pokemonGif from 'pokemon-gif';
 
 @Component({
@@ -8,7 +9,7 @@ import pokemonGif from 'pokemon-gif';
 })
 export class PokemonPanelComponent implements OnInit {
 
-  @Input() private pokemon: any;
+  @Input() private pokemon: Pokemon;
   @Input() private reverted: boolean;
 
   constructor() { }
