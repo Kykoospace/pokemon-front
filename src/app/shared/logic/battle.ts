@@ -1,33 +1,57 @@
 import {Pokemon} from '../models/pokemon';
+import {delay} from 'rxjs/operators';
 
-class Message {
-  pokemon: Pokemon;
-  message: string;
+export class Message {
+
+  constructor(
+    public pokemon: Pokemon,
+    public message: string,
+  ) {}
 }
 
 export class Battle {
 
-  private messages: Message[] = [];
+  public messages: Message[] = [];
 
   constructor(
     private pok1: Pokemon,
     private pok2: Pokemon
   ) {}
 
-  public attack() {
-    // const fighter: Pokemon = this.whoShouldAttackFirst();
-    // const target: Pokemon = fighter === this.pok1 ? this.pok2 : this.pok1;
-    // const damage = Math.floor(
-    //   Math.floor(
-    //     Math.floor(
-    //       2 * fighter.level / 5 + 2
-    //     )
-    //     * fighter.offensiveStat * fighter.basePower / target.basePower
-    //   ) / 50
-    // ) + 2;
-    //
-    // // Set damage to defender.
-    // target.defensiveStat = damage;
+  public runFight() {
+    let fighter: Pokemon = this.whoShouldAttackFirst();
+    let target: Pokemon = fighter === this.pok1 ? this.pok2 : this.pok1;
+    this.pok1.life = this.getStatFromPokemon(this.pok1, 'hp');
+    this.pok2.life = this.getStatFromPokemon(this.pok2, 'hp');
+    let tmp: Pokemon;
+    while (this.isAlive(this.pok1) && this.isAlive(this.pok2)){
+      this.attack(fighter, target);
+      tmp = fighter;
+      fighter = target;
+      target = tmp;
+    }
+    const winner = (this.isAlive(this.pok1))? this.pok1 : this.pok2;
+    this.messages.push(new Message(winner, `${winner.name} won`));
+  }
+
+  private attack(fighter: Pokemon, target: Pokemon) {
+    const damage = Math.floor(
+      Math.floor(
+        Math.floor(
+          (2 / 5) + 2
+        )
+        * this.getStatFromPokemon(fighter, 'attack')
+        * this.getStatFromPokemon(fighter, 'attack')
+        / this.getStatFromPokemon(target, 'defense')
+      ) / 50
+    ) + 2;
+
+    // Log.
+    this.messages.push(new Message(fighter, `${fighter.name} attacked ${target.name}.`));
+    this.messages.push(new Message(target, `${target.name} has taken ${damage} damages.`));
+
+    // Set damage to defender.
+    target.life -= damage;
   }
 
   public whoShouldAttackFirst(): Pokemon {

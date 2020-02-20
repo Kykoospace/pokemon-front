@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Message} from '../../shared/logic/battle';
 
 @Component({
   selector: 'app-message-panel',
@@ -7,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class MessagePanelComponent implements OnInit {
 
-  @Input() private messages: string[];
+  @Input() private messages: Message[];
 
   constructor() { }
 
