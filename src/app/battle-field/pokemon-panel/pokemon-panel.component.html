@@ -3,6 +3,7 @@
     [src]="pokemonGif(pokemon?.id)"
     alt="front_default"
     [class.reverted]="reverted"
+    [class.dead]="pokemon?.life <= 0"
   >
   <div class="status">
     <p>{{ pokemon?.name }}</p>

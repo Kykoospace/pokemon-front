@@ -10,6 +10,10 @@ div.container {
     &.reverted {
       transform: scaleX(-1);
     }
+
+    &.dead {
+      filter: brightness(0%);
+    }
   }
 
   div.status {
