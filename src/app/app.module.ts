@@ -12,7 +12,7 @@ import { PokemonComponent } from './select/grid/pokemon/pokemon.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LanguageInterceptorService } from './shared/language-interceptor.service';
 import { SearchComponent } from './select/grid/search/search.component';
-import { MessageColorDirective } from './message-color.directive';
+import { MessageColorDirective } from './battle-field/message-panel/message-color.directive';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormComponent } from './form/form.component';
 

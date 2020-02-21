@@ -1,6 +1,6 @@
 <div class="container">
+  <p class="dateDisplay">{{date | date: 'medium'}}</p>
   <table class="message-container">
-    <span class="dateDisplay">{{date | date: 'medium'}}</span>
     <tr *ngFor="let message of messages">
       <td [appMessageColor]= message.color  >{{ message.pokemon.name }}</td>
       <td [appMessageColor]= message.color >{{ message.message }}</td>
