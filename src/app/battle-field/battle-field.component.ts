@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {PokemonService} from '../shared/pokemon.service';
-import {Battle, Message} from '../shared/logic/battle';
+import {Battle} from '../shared/logic/battle';
 import {Pokemon} from '../shared/models/pokemon';
 import {forkJoin, Observable} from 'rxjs';
 import {mergeMap} from 'rxjs/operators';

@@ -20,7 +20,7 @@ export class Message {
 })
 export class Battle {
 
-  public messages: Message[];
+  public messages: Message[] = [];
   public battleRun = false;
 
   constructor(
