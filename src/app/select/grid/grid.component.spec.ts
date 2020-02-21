@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GridComponent } from './grid.component';
 import {PokemonComponent} from './pokemon/pokemon.component';
+import {SearchComponent} from './search/search.component';
+import {FormsModule} from '@angular/forms';
 
 describe('GridComponent', () => {
   let component: GridComponent;
@@ -9,7 +11,8 @@ describe('GridComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GridComponent, PokemonComponent ]
+      imports: [FormsModule],
+      declarations: [ GridComponent, PokemonComponent, SearchComponent ]
     })
     .compileComponents();
   }));

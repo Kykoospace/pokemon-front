@@ -26,6 +26,7 @@ import { FormComponent } from './form/form.component';
     GridComponent,
     PokemonComponent,
     SearchComponent,
+    PokemonComponent,
     FormComponent,
     MessageColorDirective
   ],

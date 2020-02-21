@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MessagePanelComponent } from './message-panel.component';
+import {MessageColorDirective} from '../../message-color.directive';
 
 describe('MessagePanelComponent', () => {
   let component: MessagePanelComponent;
@@ -8,7 +9,7 @@ describe('MessagePanelComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MessagePanelComponent ]
+      declarations: [ MessagePanelComponent, MessageColorDirective ]
     })
     .compileComponents();
   }));
