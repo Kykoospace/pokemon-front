@@ -11,7 +11,7 @@ import pokemonGif from 'pokemon-gif';
 })
 export class SelectComponent implements OnInit {
 
-  private pokemonList: Pokemon[] = [];
+  private pokemonList: Pokemon[] = new Array<Pokemon>();
   private pokemon1: Pokemon;
   private pokemon2: Pokemon;
 
@@ -25,8 +25,9 @@ export class SelectComponent implements OnInit {
         for (const pok of list) {
           this.pokemonService.getPokemonByUrl(pok.url)
             .subscribe((pokemon) => {
-              this.pokemonList.push(pokemon);
-            });
+              this.pokemonList[pokemon.id - 1] = pokemon;
+            },
+              err => console.error(err));
         }
       });
   }
