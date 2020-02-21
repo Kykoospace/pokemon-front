@@ -6,6 +6,7 @@ import pokemonGif from 'pokemon-gif';
 import {forkJoin, Observable} from 'rxjs';
 import {entryPointKeyFor} from '@angular/compiler-cli/src/ngtsc/routing';
 import {mergeMap} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-select',
@@ -19,7 +20,8 @@ export class SelectComponent implements OnInit {
   private pokemon2: Pokemon;
 
   constructor(
-    private pokemonService: PokemonService
+    private pokemonService: PokemonService,
+    private route: Router
   ) { }
 
   ngOnInit() {
@@ -55,7 +57,11 @@ export class SelectComponent implements OnInit {
       });
   }
 
-  pokemonGif(id: number) {
+  private pokemonGif(id: number) {
     return pokemonGif(id);
+  }
+
+  private startFight() {
+    this.route.navigate(['fight', this.pokemon1.id, this.pokemon2.id]);
   }
 }

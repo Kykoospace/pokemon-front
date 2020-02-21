@@ -10,7 +10,7 @@
       <img src="./assets/images/vs_logo.png" alt="">
       <button
         *ngIf="pokemon1 && pokemon2"
-        [routerLink]="['/fight', pokemon1.id, pokemon2.id]"
+        (click)="startFight()"
       >Démarrer la violence</button>
     </div>
     <div class="fighter">

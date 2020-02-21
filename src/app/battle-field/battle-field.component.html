@@ -1,7 +1,7 @@
 <div class="container">
   <div class="grid">
     <div>
-      <button [routerLink]="['/select']"><- Retour</button>
+      <button (click)="backToSelect()"><- Retour</button>
       <button  (click)="startBattle()"> Start Battle</button>
       <button  (click)="stopBattle()"> Stop Battle</button>
     </div>

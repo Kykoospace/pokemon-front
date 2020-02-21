@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {PokemonService} from '../shared/pokemon.service';
 import {Battle, Message} from '../shared/logic/battle';
 import {Pokemon} from '../shared/models/pokemon';
@@ -17,9 +17,10 @@ export class BattleFieldComponent implements OnInit {
   private pokemon2: Pokemon;
 
   constructor(
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private pokemonService: PokemonService,
     private battle: Battle,
+    private route: Router
 ) { }
 
   ngOnInit() {
@@ -33,7 +34,7 @@ export class BattleFieldComponent implements OnInit {
     let pok1Observable: Observable<Pokemon>;
     let pok2Observable: Observable<Pokemon>;
 
-    this.route.params.pipe(mergeMap((params: Params) => {
+    this.activatedRoute.params.pipe(mergeMap((params: Params) => {
         pok1Observable = this.pokemonService.getPokemonById(params.pokemonId1);
         pok2Observable = this.pokemonService.getPokemonById(params.pokemonId2);
         return forkJoin([pok1Observable, pok2Observable]);
@@ -56,4 +57,7 @@ export class BattleFieldComponent implements OnInit {
     this.battle.battleRun = false;
   }
 
+  private backToSelect() {
+    this.route.navigate(['select']);
+  }
 }
