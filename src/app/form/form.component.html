@@ -1,0 +1,11 @@
+<div class="container">
+  <form action="" [formGroup]="form" (ngSubmit)="submitForm()">
+    <p>Pensez-vous que la violence est bien ? (oui/non)</p>
+    <input type="text" formControlName="firstQuestion">
+    <p>Pensez-vous faire un don à l'association pokébattus ?</p>
+    <textarea name="" id="" cols="30" rows="10" formControlName="secondQuestion"></textarea>
+    <div class="right">
+      <button *ngIf="form.valid">Valider</button>
+    </div>
+  </form>
+</div>

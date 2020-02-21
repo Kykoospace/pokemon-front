@@ -3,6 +3,9 @@ import {PokemonService} from '../shared/pokemon.service';
 import {Pokemon} from '../shared/models/pokemon';
 import {PokemonFromApi} from '../shared/models/apiModels';
 import pokemonGif from 'pokemon-gif';
+import {forkJoin, Observable} from 'rxjs';
+import {entryPointKeyFor} from '@angular/compiler-cli/src/ngtsc/routing';
+import {mergeMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-select',
@@ -21,13 +24,19 @@ export class SelectComponent implements OnInit {
 
   ngOnInit() {
     this.pokemonService.getPokemonList()
-      .subscribe((list: PokemonFromApi[]) => {
-        for (const pok of list) {
-          this.pokemonService.getPokemonByUrl(pok.url)
-            .subscribe((pokemon) => {
-              this.pokemonList[pokemon.id - 1] = pokemon;
-            },
-              err => console.error(err));
+      .pipe(
+        mergeMap(
+          (list: PokemonFromApi[]) => {
+            const results = new Array<Observable<Pokemon>>();
+            for (const res of list) {
+              results.push(this.pokemonService.getPokemonByUrl(res.url));
+            }
+            return forkJoin(results);
+          })
+      )
+      .subscribe(results => {
+        for (const pok of results) {
+          this.pokemonList[pok.id - 1] = pok;
         }
       });
   }

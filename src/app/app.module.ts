@@ -12,7 +12,8 @@ import { PokemonComponent } from './select/grid/pokemon/pokemon.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LanguageInterceptorService } from './shared/language-interceptor.service';
 import { SearchComponent } from './select/grid/search/search.component';
-import {FormsModule} from '@angular/forms';
+import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
@@ -23,16 +24,19 @@ import {FormsModule} from '@angular/forms';
     SelectComponent,
     GridComponent,
     PokemonComponent,
-    SearchComponent
+    SearchComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
-    LanguageInterceptorService
+    LanguageInterceptorService,
+    FormBuilder
   ],
   bootstrap: [AppComponent]
 })
