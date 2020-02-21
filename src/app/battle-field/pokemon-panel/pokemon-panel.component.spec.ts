@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import pokemonGif from 'pokemon-gif';
+
 
 import { PokemonPanelComponent } from './pokemon-panel.component';
 
@@ -8,6 +10,7 @@ describe('PokemonPanelComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [pokemonGif],
       declarations: [ PokemonPanelComponent ]
     })
     .compileComponents();

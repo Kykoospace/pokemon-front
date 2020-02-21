@@ -6,6 +6,7 @@ import {MessagePanelComponent} from './message-panel/message-panel.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {ActivatedRoute, convertToParamMap} from '@angular/router';
 import {Observable, of} from 'rxjs';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('BattleFieldComponent', () => {
   let component: BattleFieldComponent;
@@ -13,7 +14,7 @@ describe('BattleFieldComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule],
       providers: [
         {
           provide: ActivatedRoute,

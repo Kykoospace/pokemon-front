@@ -1,5 +1,6 @@
 <div class="container">
   <table class="message-container">
+    <span class="dateDisplay">{{date | date: 'medium'}}</span>
     <tr *ngFor="let message of messages">
       <td class="name">{{ message.pokemon.name }}</td>
       <td class="message">{{ message.message }}</td>

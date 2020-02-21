@@ -9,9 +9,12 @@ import {Message} from '../../shared/logic/battle';
 export class MessagePanelComponent implements OnInit {
 
   @Input() private messages: Message[];
+  @Input() private  date: Date;
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.date = new Date();
+  }
 
 }

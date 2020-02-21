@@ -1,5 +1,8 @@
 import {Pokemon} from '../models/pokemon';
-import {delay} from 'rxjs/operators';
+import {delay, last, map, take, takeUntil, takeWhile, timeout} from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {root} from 'rxjs/internal-compatibility';
+import {interval, Observable} from 'rxjs';
 
 export class Message {
 
@@ -9,29 +12,42 @@ export class Message {
   ) {}
 }
 
+
+
+@Injectable({
+  providedIn: 'root'
+})
 export class Battle {
 
-  public messages: Message[] = [];
+  public messages: Message[];
+  public battleRun = false;
 
   constructor(
-    private pok1: Pokemon,
-    private pok2: Pokemon
   ) {}
 
-  public runFight() {
-    let fighter: Pokemon = this.whoShouldAttackFirst();
-    let target: Pokemon = fighter === this.pok1 ? this.pok2 : this.pok1;
-    this.pok1.life = this.getStatFromPokemon(this.pok1, 'hp');
-    this.pok2.life = this.getStatFromPokemon(this.pok2, 'hp');
+  public runFight(pokemon1: Pokemon, pokemon2: Pokemon) {
+    let fighter: Pokemon = this.whoShouldAttackFirst(pokemon1, pokemon2);
+    let target: Pokemon = fighter === pokemon1 ? pokemon2 : pokemon1;
+    pokemon1.life = this.getStatFromPokemon(pokemon1, 'hp');
+    pokemon2.life = this.getStatFromPokemon(pokemon2, 'hp');
     let tmp: Pokemon;
-    while (this.isAlive(this.pok1) && this.isAlive(this.pok2)){
-      this.attack(fighter, target);
-      tmp = fighter;
-      fighter = target;
-      target = tmp;
-    }
-    const winner = (this.isAlive(this.pok1)) ? this.pok1 : this.pok2;
-    this.messages.push(new Message(winner, `${winner.name} won`));
+
+    interval(1000)
+      .pipe(
+        takeWhile(() => this.isAlive(target) && this.isAlive(fighter) && this.battleRun)
+      )
+      .subscribe(
+        () => {
+          tmp = fighter;
+          fighter = target;
+          target = tmp;
+          this.attack(fighter, target);
+        },
+        err => console.log('Error on battle'),
+        () => {
+          const winner = (this.isAlive(pokemon1)) ? pokemon1 : pokemon2;
+          this.messages.push(new Message(winner, `${winner.name} won the battle`));
+        });
   }
 
   public attack(fighter: Pokemon, target: Pokemon) {
@@ -46,7 +62,7 @@ export class Battle {
       ) / 50
     ) + 2;
 
-    // Log.
+    // Logs.
     this.messages.push(new Message(fighter, `${fighter.name} attacked ${target.name}.`));
     this.messages.push(new Message(target, `${target.name} has taken ${damage} damages.`));
 
@@ -54,12 +70,12 @@ export class Battle {
     target.life -= damage;
   }
 
-  public whoShouldAttackFirst(): Pokemon {
-    const speedPok1 = this.getStatFromPokemon(this.pok1, 'speed');
-    const speedPok2 = this.getStatFromPokemon(this.pok2, 'speed');
+  public whoShouldAttackFirst(pokemon1: Pokemon, pokemon2: Pokemon): Pokemon {
+    const speedPok1 = this.getStatFromPokemon(pokemon1, 'speed');
+    const speedPok2 = this.getStatFromPokemon(pokemon2, 'speed');
     return (speedPok1 >= speedPok2)
-      ? this.pok1
-      : this.pok2;
+      ? pokemon1
+      : pokemon2;
   }
 
   public isAlive(pokemon: Pokemon) {

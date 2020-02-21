@@ -1,5 +1,7 @@
 <div class="container">
   <button [routerLink]="['/select']"><- Retour</button>
+  <button  (click)="startBattle()"> Start Battle</button>
+  <button  (click)="stopBattle()"> Stop Battle</button>
   <div class="grid">
     <div class="field">
       <app-pokemon-panel

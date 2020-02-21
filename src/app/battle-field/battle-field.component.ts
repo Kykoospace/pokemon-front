@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {PokemonService} from '../shared/pokemon.service';
 import {Battle, Message} from '../shared/logic/battle';
@@ -16,14 +16,14 @@ export class BattleFieldComponent implements OnInit {
   private pokemon1: Pokemon;
   private pokemon2: Pokemon;
 
-  private battle: Battle;
-
   constructor(
     private route: ActivatedRoute,
-    private pokemonService: PokemonService
-  ) { }
+    private pokemonService: PokemonService,
+    private battle: Battle,
+) { }
 
   ngOnInit() {
+    this.battle.messages = [];
     this.initPokemon();
     console.log(this.pokemon1);
   }
@@ -42,11 +42,18 @@ export class BattleFieldComponent implements OnInit {
       result => {
         this.pokemon1 = result[0];
         this.pokemon2 = result[1];
-        this.battle = new Battle(this.pokemon1, this.pokemon2);
-        this.battle.runFight();
       },
       error => console.log(`Error while trying to retrieve pokemon from pokemon service ${error}`),
     );
+  }
+
+  public startBattle(): void {
+    this.battle.battleRun = true;
+    this.battle.runFight(this.pokemon1, this.pokemon2);
+  }
+
+  public stopBattle(): void {
+    this.battle.battleRun = false;
   }
 
 }
