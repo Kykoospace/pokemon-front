@@ -9,6 +9,7 @@ export class Message {
   constructor(
     public pokemon: Pokemon,
     public message: string,
+    public color = 'white',
   ) {}
 }
 
@@ -30,6 +31,8 @@ export class Battle {
     let target: Pokemon = fighter === pokemon1 ? pokemon2 : pokemon1;
     pokemon1.life = this.getStatFromPokemon(pokemon1, 'hp');
     pokemon2.life = this.getStatFromPokemon(pokemon2, 'hp');
+    pokemon1.color = 'white';
+    pokemon2.color = 'red';
     let tmp: Pokemon;
 
     interval(1000)
@@ -46,7 +49,7 @@ export class Battle {
         err => console.log('Error on battle'),
         () => {
           const winner = (this.isAlive(pokemon1)) ? pokemon1 : pokemon2;
-          this.messages.push(new Message(winner, `${winner.name} won the battle`));
+          this.messages.push(new Message(winner, `${winner.name} won the battle`, winner.color));
         });
   }
 
@@ -63,8 +66,8 @@ export class Battle {
     ) + 2;
 
     // Logs.
-    this.messages.push(new Message(fighter, `${fighter.name} attacked ${target.name}.`));
-    this.messages.push(new Message(target, `${target.name} has taken ${damage} damages.`));
+    this.messages.push(new Message(fighter, `${fighter.name} attacked ${target.name}.`, fighter.color));
+    this.messages.push(new Message(target, `${target.name} has taken ${damage} damages.`, target.color));
 
     // Set damage to defender.
     target.life -= damage;

@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LanguageInterceptorService } from './shared/language-interceptor.service';
 import { SearchComponent } from './select/grid/search/search.component';
 import {FormsModule} from '@angular/forms';
+import { MessageColorDirective } from './message-color.directive';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,8 @@ import {FormsModule} from '@angular/forms';
     GridComponent,
     PokemonComponent,
     SearchComponent
+    PokemonComponent,
+    MessageColorDirective
   ],
   imports: [
     BrowserModule,
