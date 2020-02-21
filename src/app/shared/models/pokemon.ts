@@ -7,6 +7,7 @@ export interface Pokemon {
     front_default: string;
   };
   stats: Stat[];
+  color: string;
 }
 
 interface Stat {
