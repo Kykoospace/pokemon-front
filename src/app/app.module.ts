@@ -11,6 +11,8 @@ import { GridComponent } from './select/grid/grid.component';
 import { PokemonComponent } from './select/grid/pokemon/pokemon.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LanguageInterceptorService } from './shared/language-interceptor.service';
+import { SearchComponent } from './select/grid/search/search.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,12 +22,14 @@ import { LanguageInterceptorService } from './shared/language-interceptor.servic
     PokemonPanelComponent,
     SelectComponent,
     GridComponent,
-    PokemonComponent
+    PokemonComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     LanguageInterceptorService

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SelectComponent } from './select/select.component';
-import {BattleFieldComponent} from './battle-field/battle-field.component';
+import { BattleFieldComponent } from './battle-field/battle-field.component';
 
 
 const routes: Routes = [

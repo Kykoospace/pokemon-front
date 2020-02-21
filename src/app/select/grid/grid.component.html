@@ -1,8 +1,12 @@
 <div class="container">
+  <app-search
+    [searchValue]="searchValue"
+    (searchValueChanged)="updateSearch($event)"
+  ></app-search>
   <div class="grid">
     <app-pokemon
-      *ngFor="let pokemon of pokemonList"
-      [pokemonUrl]="pokemon.url"
+      *ngFor="let pokemon of filteredList"
+      [pokemon]="pokemon"
       [selectedPokemon]="selectedPokemon"
       (pokemonSelected)="selectPokemon($event)"
     ></app-pokemon>
